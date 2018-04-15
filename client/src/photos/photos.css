@@ -1,0 +1,83 @@
+body {
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+}
+
+.photos {
+  text-align: center;
+}
+
+.item {
+  position: relative;
+  display: inline-flex;
+  width: 150px;
+  height: 150px;
+  overflow: hidden;
+}
+
+.photo {
+  max-width: 100%;
+  opacity: .9;
+  -webkit-backface-visibility: hidden;
+}
+
+.item:hover .photo {
+  transition: all .3s ease-out;
+  opacity: .6;
+  transform: scale(1.1);
+}
+
+.color-row-red {
+  display: inline-flex;
+  background-color: red
+}
+
+.color-row-orange {
+  display: inline-flex;
+  background-color: orange;
+}
+
+.color-row-yellow {
+  display: inline-flex;
+  background-color: yellow;
+}
+
+.color-row-green {
+  display: inline-flex;
+  background-color: green;
+}
+
+.color-row-blue {
+  display: inline-flex;
+  background-color: blue;
+}
+
+.color-row-purple {
+  display: inline-flex;
+  background-color: purple;
+}
+
+.tooltip {
+  position: absolute;
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+}
+
+.tooltip .tooltiptext {
+  box-sizing: border-box;
+  position: absolute;
+  width: 90%;
+  bottom: 5%;
+  left: 5%;
+  padding: 5px;
+  font-size: 12px;
+  border-radius: 10px;
+  background-color:rgb(80, 80, 80);
+  color: white;
+  opacity: 0;
+}
+
+.item:hover .tooltiptext {
+  opacity: .8;
+  transition: opacity 0.5s ease-out;
+}
