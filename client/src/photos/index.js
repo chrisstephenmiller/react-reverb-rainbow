@@ -11,16 +11,9 @@ export default class Photo extends Component {
     this.state = {
       listings: []
     }
-
   }
 
-  componentDidMount = () => {
-    const redListings = []
-    const orangeListings = []
-    const yellowListings = []
-    const greenListings = []
-    const blueListings = []
-    const purpleListings = []
+  getListings = () => {
     axios.get('/api/listings')
       .then(res => res.data)
       .then(res => {
@@ -32,11 +25,17 @@ export default class Photo extends Component {
           if (l.color.includes('blue')) blueListings.push(l)
           if (l.color.includes('purple')) purpleListings.push(l)
         })
-        const listings = [shuffle((redListings).slice(0, 50)), shuffle((orangeListings).slice(0, 50)), shuffle((yellowListings).slice(0, 50)), shuffle((greenListings).slice(0, 50)), shuffle((blueListings).slice(0, 50)), shuffle((purpleListings).slice(0, 50))]
+        const listings = [((redListings).slice(0, 10)), ((orangeListings).slice(0, 10)), ((yellowListings).slice(0, 10)), ((greenListings).slice(0, 10)), ((blueListings).slice(0, 10)), ((purpleListings).slice(0, 10))]
         this.setState({ listings })
       })
+      .catch(err => console.log(err))
 
-
+    const redListings = []
+    const orangeListings = []
+    const yellowListings = []
+    const greenListings = []
+    const blueListings = []
+    const purpleListings = []
 
     function shuffle(array) {
       var currentIndex = array.length, temporaryValue, randomIndex;
@@ -55,9 +54,20 @@ export default class Photo extends Component {
     }
   }
 
+  componentDidMount = () => {
+    this.getListings()
+  }
+
+  deletePhoto = listingId => {
+    axios.delete(`./api/listings/${listingId}`)
+      .then(res => {
+        console.log(res.data);
+        this.getListings()
+      })
+  }
+
   render = () => {
     const { listings } = this.state
-    console.log(listings)
     return (
       <div className="photos">
         {listings.map((c, i) => {
@@ -65,18 +75,20 @@ export default class Photo extends Component {
             <div key={c[0].listingId} className={`color-row-${colors[i]}`}>
               {c.map(l => {
                 return (
-                  <a key={l.id} target="_blank" href={`http://www.reverb.com/item/${l.listingId}`}>
-                    <div className="item" onClick={() => console.log(l.listingId)}>
-                      <img alt="listing" src={l.imgUrl} className="photo" />
-                      <div className="tooltip">
-                        <span className={`tooltiptext`}>
-                          {`${l.make} ${l.model}`}
-                          <br></br>
-                          <span>{`$${l.price}`}</span>
-                        </span>
-                      </div>
+                  /*<a key={l.id} target="_blank" href={`http://www.reverb.com/item/${l.listingId}`}>*/
+                  <div key={l.id} className="item" onClick={() => {
+                    this.deletePhoto(l.listingId)
+                  }}>
+                    <img alt="listing" src={l.imgUrl} className="photo" />
+                    <div className="tooltip">
+                      <span className={`tooltiptext`}>
+                        {`${l.make} ${l.model}`}
+                        <br></br>
+                        <span>{`$${l.price}`}</span>
+                      </span>
                     </div>
-                  </a>
+                  </div>
+                  /*</a>*/
                 )
               })}
             </div>
