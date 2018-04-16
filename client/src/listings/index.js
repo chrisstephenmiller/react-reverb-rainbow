@@ -37903,5 +37903,5 @@ function shuffle(array) {
   return array;
 }
 
-const colorArray = [shuffle((redListings).slice(0, 50)), shuffle((orangeListings).slice(0, 50)), shuffle((yellowListings).slice(0, 50)), shuffle((greenListings).slice(0, 50)), shuffle((blueListings).slice(0, 50)), shuffle((purpleListings).slice(0, 50))]
+const colorListings = [shuffle((redListings).slice(0, 50)), shuffle((orangeListings).slice(0, 50)), shuffle((yellowListings).slice(0, 50)), shuffle((greenListings).slice(0, 50)), shuffle((blueListings).slice(0, 50)), shuffle((purpleListings).slice(0, 50))]
 export default colorArray

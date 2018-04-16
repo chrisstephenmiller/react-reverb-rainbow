@@ -1,18 +1,18 @@
-const fetch = require(`node-fetch`)
-const { db, Listing } = require('./listings-db')
+const fetch = require('node-fetch')
+// const { db, Listing } = require('./index')
 
-db.sync({ force: true })
-  .then(() => {
-    console.log('db synced')
-  });
+// db.sync({ force: true })
+//   .then(() => {
+//     console.log('db synced')
+//   });
 
 const getListings = p => {
-  return fetch(`https://reverb.com/api/listings?product_type=electric-guitars&page=${p}`, {
-    headers: {
-      'Content-Type': 'application/hal+json',
-      'Accept': 'application/hal+json',
-      'Accept-Version': '3.0'
-    },
+  return fetch(`api/listings`, {
+    // headers: {
+    //   'Content-Type': 'application/hal+json',
+    //   'Accept': 'application/hal+json',
+    //   'Accept-Version': '3.0'
+    // },
     method: `GET`,
   })
     .then(results => results.json())
@@ -67,4 +67,4 @@ const pages = p => {
   }
 }
 
-pages(750)
+pages(10)
