@@ -4,9 +4,9 @@ import Header from './header';
 
 class App extends Component {
   render() {
+    // <Header />
     return (
       <div>
-        <Header />
         <Photos />
       </div>
     );

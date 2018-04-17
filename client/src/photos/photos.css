@@ -20,11 +20,11 @@ body {
   backface-visibility: hidden;
 }
 
-.item:hover .photo {
+/* .item:hover .photo {
   transition: all .3s ease-out;
   opacity: .6;
   transform: scale(1.1);
-}
+} */
 
 .color-row-red {
   display: inline-flex;
@@ -76,8 +76,8 @@ body {
   color: white;
   opacity: 0;
 }
-
+/* 
 .item:hover .tooltiptext {
   opacity: .8;
   transition: opacity 0.5s ease-out;
-}
+} */
