@@ -25,7 +25,8 @@ export default class Photo extends Component {
           if (l.color.includes('blue')) blueListings.push(l)
           if (l.color.includes('purple')) purpleListings.push(l)
         })
-        const listings = [((redListings).slice(0, 10)), ((orangeListings).slice(0, 10)), ((yellowListings).slice(0, 10)), ((greenListings).slice(0, 10)), ((blueListings).slice(0, 10)), ((purpleListings).slice(0, 10))]
+        console.log(redListings.length, orangeListings.length, yellowListings.length, greenListings.length, blueListings.length, purpleListings.length)
+        const listings = [((redListings).slice(0, 100)), ((orangeListings).slice(0, 100)), ((yellowListings).slice(0, 100)), ((greenListings).slice(0, 100)), ((blueListings).slice(0, 100)), ((purpleListings).slice(0, 100))]
         this.setState({ listings })
       })
       .catch(err => console.log(err))

@@ -1,7 +1,7 @@
 const fetch = require('node-fetch')
 const { db, Listing } = require('./index')
 
-db.sync({ force: true })
+db.sync({ force: false })
   .then(() => {
     console.log('db synced')
   });
@@ -16,6 +16,7 @@ const getListings = p => {
     method: `GET`,
   })
     .then(results => results.json())
+    .catch(error => console.log(error))
 }
 
 const listingsWithFinish = p => getListings(p).then(results => results.listings.filter(l => l.finish))
@@ -27,7 +28,7 @@ const orange = l => { if (l.finish.includes('Orange')) { l.finish = 'orange' } }
 const yellow = l => { if (l.finish.includes('Yellow')) { l.finish = 'yellow' } }
 const green = l => { if (l.finish.includes('Green')) { l.finish = 'green' } }
 const blue = l => { if (l.finish.includes('Blue')) { l.finish = 'blue' } }
-const purple = l => { if (l.finish.includes('Purple')) { l.finish = 'purple' } }
+const purple = l => { if ((l.finish.includes('Purple')) || (l.finish.includes('Burgundy'))) { l.finish = 'purple' } }
 
 const listingsFilteredByColor = p => {
   return listingsWithFinish(p)
@@ -48,7 +49,7 @@ const storeColorfulListings = p => {
   listingsFilteredByColor(p)
     .then(listings => {
       listings.forEach(l => {
-        Listing.create({
+        Listing.upsert({
           listingId: l.id,
           title: l.title,
           price: l.price.amount,
@@ -62,9 +63,9 @@ const storeColorfulListings = p => {
 }
 
 const pages = p => {
-  for (let i = 1; i < p; i++) {
+  for (let i = 900; i < p; i++) {
     storeColorfulListings(i)
   }
 }
 
-pages(750)
+pages(1000)

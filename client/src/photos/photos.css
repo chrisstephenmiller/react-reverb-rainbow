@@ -16,8 +16,8 @@ body {
 
 .photo {
   max-width: 100%;
-  opacity: .9;
-  -webkit-backface-visibility: hidden;
+  opacity: 1;
+  backface-visibility: hidden;
 }
 
 .item:hover .photo {

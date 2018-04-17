@@ -5,7 +5,10 @@ console.log("Opening database connection");
 const db = new Sequelize(`postgres://localhost:5432/reverb-rainbow`, { logging: false });
 
 const Listing = db.define('listing', {
-  listingId: Sequelize.INTEGER,
+  listingId: {
+    type: Sequelize.INTEGER,
+    unique: true
+  },
   title: Sequelize.STRING,
   price: Sequelize.FLOAT,
   make: Sequelize.STRING,
