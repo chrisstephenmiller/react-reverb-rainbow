@@ -59,14 +59,6 @@ export default class Photo extends Component {
     this.getListings()
   }
 
-  deletePhoto = listingId => {
-    axios.delete(`./api/listings/${listingId}`)
-      .then(res => {
-        console.log(res.data);
-        this.getListings()
-      })
-  }
-
   render = () => {
     const { listings } = this.state
     return (
@@ -77,9 +69,7 @@ export default class Photo extends Component {
               {c.map(l => {
                 return (
                   /*<a key={l.id} target="_blank" href={`http://www.reverb.com/item/${l.listingId}`}>*/
-                  <div key={l.id} className="item" onClick={() => {
-                    this.deletePhoto(l.listingId)
-                  }}>
+                  <div key={l.id} className="item">
                     <img alt="listing" src={l.imgUrl} className="photo" />
                     <div className="tooltip">
                       <span className={`tooltiptext`}>
