@@ -17,7 +17,7 @@ export default class Photo extends Component {
     axios.get('/api/listings')
       .then(res => res.data)
       .then(res => {
-        res.forEach(l => {
+        res.forEach((l, i) => {
           if (l.color.includes('red')) redListings.push(l)
           if (l.color.includes('orange')) orangeListings.push(l)
           if (l.color.includes('yellow')) yellowListings.push(l)
@@ -25,8 +25,7 @@ export default class Photo extends Component {
           if (l.color.includes('blue')) blueListings.push(l)
           if (l.color.includes('purple')) purpleListings.push(l)
         })
-        console.log(redListings.length, orangeListings.length, yellowListings.length, greenListings.length, blueListings.length, purpleListings.length)
-        const listings = [((redListings).slice(0, 100)), ((orangeListings).slice(0, 100)), ((yellowListings).slice(0, 100)), ((greenListings).slice(0, 100)), ((blueListings).slice(0, 100)), ((purpleListings).slice(0, 100))]
+        const listings = [shuffle(redListings), shuffle(orangeListings), shuffle(yellowListings), shuffle(greenListings), shuffle(blueListings), shuffle(purpleListings)]
         this.setState({ listings })
       })
       .catch(err => console.log(err))
@@ -65,7 +64,7 @@ export default class Photo extends Component {
       <div className="photos">
         {listings.map((c, i) => {
           return (
-            <div key={c[0].listingId} className={`color-row-${colors[i]}`}>
+            <div key={c[0].listingId} className={`${colors[i]}-row`}>
               {c.map(l => {
                 return (
                   /*<a key={l.id} target="_blank" href={`http://www.reverb.com/item/${l.listingId}`}>*/

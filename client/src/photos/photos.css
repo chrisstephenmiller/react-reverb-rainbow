@@ -26,32 +26,32 @@ body {
   transform: scale(1.1);
 } */
 
-.color-row-red {
+.red-row {
   display: inline-flex;
   background-color: red
 }
 
-.color-row-orange {
+.orange-row {
   display: inline-flex;
   background-color: orange;
 }
 
-.color-row-yellow {
+.yellow-row {
   display: inline-flex;
   background-color: yellow;
 }
 
-.color-row-green {
+.green-row {
   display: inline-flex;
   background-color: green;
 }
 
-.color-row-blue {
+.blue-row {
   display: inline-flex;
   background-color: blue;
 }
 
-.color-row-purple {
+.purple-row {
   display: inline-flex;
   background-color: purple;
 }
