@@ -1,9 +1,21 @@
-.header {
+#header {
+    position: fixed;
     display: inline-flex;
+    align-items: center;
+    justify-content: center;
     height: 50px;
     width: 100%;
-    font-size: 32px;
-    color: white;
     background-color: black;
-    text-align: center;
+    z-index: 1;
+}
+
+#header-text {
+    display: inline-flex;
+    align-items: baseline;
+    color: white;
+    font-size:   32px;
+}
+
+#author {
+    font-size: 18px;
 }

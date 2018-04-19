@@ -5,11 +5,11 @@ import './header.css'
 
 const Header = () => {
   return (
-    <div className="header">
-      <div>
-        REVERB RAINBOW
-    </div>
-    </div>
+    <div id="header">
+      <div id="header-text">
+        <span>REVERB RAINBOW</span><span id="author">made by chris miller</span>
+      </div>
+      </div>
   );
 }
 

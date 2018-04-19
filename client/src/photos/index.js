@@ -9,9 +9,16 @@ export default class Photo extends Component {
     super()
 
     this.state = {
-      colorListings: []
+      colorListings: [],
+      halfColorListings: [],
+      newColorListings: [],
+      halfNewColorListings: [],
     }
   }
+
+    componentDidMount = () => {
+      this.getListings()
+    }
 
   getListings = () => {
     axios.get('/api/listings')
@@ -25,8 +32,11 @@ export default class Photo extends Component {
           if (l.color.includes('blue')) blueListings.push(l)
           if (l.color.includes('purple')) purpleListings.push(l)
         })
-        const colorListings = [shuffle(redListings), shuffle(orangeListings), shuffle(yellowListings), shuffle(greenListings), shuffle(blueListings), shuffle(purpleListings)]
-        this.setState({ colorListings })
+        const colorListings = [shuffle(redListings.slice(0,25)), shuffle(orangeListings.slice(0,25)), shuffle(yellowListings.slice(0,25)), shuffle(greenListings.slice(0,25)), shuffle(blueListings.slice(0,25)), shuffle(purpleListings.slice(0,25))]
+        const halfColorListings = [shuffle(redListings.slice(25)), shuffle(orangeListings.slice(25)), shuffle(yellowListings.slice(25)), shuffle(greenListings.slice(25)), shuffle(blueListings.slice(25)), shuffle(purpleListings.slice(25))]
+        const newColorListings = colorListings.map(arr => shuffle([...arr]))
+        const halfNewColorListings = halfColorListings.map(arr => shuffle([...arr]))
+        this.setState({ colorListings, halfColorListings, newColorListings, halfNewColorListings })
       })
       .catch(err => console.log(err))
 
@@ -54,15 +64,11 @@ export default class Photo extends Component {
     }
   }
 
-  componentDidMount = () => {
-    this.getListings()
-  }
-
   render = () => {
-    const { colorListings } = this.state
+    const { colorListings, halfColorListings, newColorListings, halfNewColorListings } = this.state
     return (
       <div className="photos">
-        {colorListings.map((c, i) => {
+        {[colorListings, halfColorListings, newColorListings, halfNewColorListings].map(a => a.map((c, i) => {
           return (
             <div key={`color-${i}`} className={`${colors[i]}-row`}>
               {c.map(l => {
@@ -83,7 +89,7 @@ export default class Photo extends Component {
               })}
             </div>
           )
-        })}
+        }))}
       </div>
     );
   }
