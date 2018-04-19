@@ -1,7 +1,7 @@
 import React from 'react';
 import './header.css'
 
-const colors = [`red`, `orange`, `yellow`, `green`, `blue`, `purple`]
+// const colors = [`red`, `orange`, `yellow`, `green`, `blue`, `purple`]
 
 const Header = () => {
   return (

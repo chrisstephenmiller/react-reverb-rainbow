@@ -9,15 +9,15 @@ export default class Photo extends Component {
     super()
 
     this.state = {
-      listings: []
+      colorListings: []
     }
   }
 
   getListings = () => {
     axios.get('/api/listings')
       .then(res => res.data)
-      .then(res => {
-        res.forEach((l, i) => {
+      .then(listings => {
+        listings.forEach((l, i) => {
           if (l.color.includes('red')) redListings.push(l)
           if (l.color.includes('orange')) orangeListings.push(l)
           if (l.color.includes('yellow')) yellowListings.push(l)
@@ -25,8 +25,8 @@ export default class Photo extends Component {
           if (l.color.includes('blue')) blueListings.push(l)
           if (l.color.includes('purple')) purpleListings.push(l)
         })
-        const listings = [shuffle(redListings), shuffle(orangeListings), shuffle(yellowListings), shuffle(greenListings), shuffle(blueListings), shuffle(purpleListings)]
-        this.setState({ listings })
+        const colorListings = [shuffle(redListings), shuffle(orangeListings), shuffle(yellowListings), shuffle(greenListings), shuffle(blueListings), shuffle(purpleListings)]
+        this.setState({ colorListings })
       })
       .catch(err => console.log(err))
 
@@ -59,15 +59,15 @@ export default class Photo extends Component {
   }
 
   render = () => {
-    const { listings } = this.state
+    const { colorListings } = this.state
     return (
       <div className="photos">
-        {listings.map((c, i) => {
+        {colorListings.map((c, i) => {
           return (
-            <div key={c[0].listingId} className={`${colors[i]}-row`}>
+            <div key={`color-${i}`} className={`${colors[i]}-row`}>
               {c.map(l => {
                 return (
-                  /*<a key={l.id} target="_blank" href={`http://www.reverb.com/item/${l.listingId}`}>*/
+                  <a key={l.id} target="_blank" href={`http://www.reverb.com/item/${l.listingId}`}>
                   <div key={l.id} className="item">
                     <img alt="listing" src={l.imgUrl} className="photo" />
                     <div className="tooltip">
@@ -78,7 +78,7 @@ export default class Photo extends Component {
                       </span>
                     </div>
                   </div>
-                  /*</a>*/
+                  </a>
                 )
               })}
             </div>
