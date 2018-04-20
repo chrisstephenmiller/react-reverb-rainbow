@@ -1,21 +1,30 @@
 #header {
     position: fixed;
-    display: inline-flex;
     align-items: center;
+    display: inline-flex;
     justify-content: center;
     height: 50px;
     width: 100%;
     background-color: black;
     z-index: 1;
+    transition: all 1s ease;
+}
+
+#header.hide {
+    transform: translateY(-150px);
+    transition: all 2s ease;
 }
 
 #header-text {
-    display: inline-flex;
-    align-items: baseline;
     color: white;
     font-size:   32px;
 }
 
 #author {
     font-size: 18px;
+}
+
+#logo {
+    height: 30px;
+    width: 30px
 }
