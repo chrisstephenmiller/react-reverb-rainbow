@@ -1,0 +1,27 @@
+#footer {
+    position: fixed;
+    bottom: 0px;
+    align-items: center;
+    display: inline-flex;
+    justify-content: center;
+    height: 50px;
+    width: 100%;
+    background-color: black;
+    z-index: 1;
+    transition: all .5s ease-out;
+}
+
+#footer.hide {
+    transform: translateY(50px);
+    transition: all .5s ease-in;
+}
+
+#footer-text {
+    color: white;
+    font-size:   18px;
+}
+
+#logo {
+    height: 30px;
+    width: 30px
+}
