@@ -1,5 +1,8 @@
 
 .photos {
+  box-sizing: border-box;
+  border-left: solid black 10px;
+  border-right: solid black 10px;
   text-align: center;
   overflow: auto;
   transform: translateY(50px);

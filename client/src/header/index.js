@@ -18,7 +18,7 @@ class Header extends Component {
     return (
       <div id="header">
         <div id="header-text">
-        <span>REVERB RAINBOW </span><span id="author"> - made by chris miller</span>
+        <span>REVERB RAINBOW </span>
         </div>
       </div>
     );

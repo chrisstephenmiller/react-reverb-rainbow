@@ -66,7 +66,7 @@ export default class Photo extends Component {
       <div className="photos">
         {[colorListings, halfColorListings, newColorListings, halfNewColorListings].map(a => a.map((c, i) => {
           return (
-            <div key={`color-${i}`} className={`${colors[i]}-row`}>
+            <div key={`color-${i}`} className={`color-row ${colors[i]}-row`}>
               {c.map(l => {
                 return (
                   <a key={l.id} target="_blank" href={`http://www.reverb.com/item/${l.listingId}`}>
