@@ -11,7 +11,7 @@ app.use(volleyball);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use(express.static(path.join(__dirname, './public')));
+app.use(express.static(path.join(__dirname, '../client/build')));
 
 app.use('/api', require('./api'));
 
@@ -26,7 +26,7 @@ const PORT = 3001
 db.sync({ force: false })
     .then(() => {
         console.log('db synced')
-        app.listen(PORT, () => console.log(`studiously serving silly sounds on port ${PORT}`))
+        app.listen(process.env.PORT || PORT, () => console.log(`studiously serving silly sounds on port ${PORT}`))
     });
 
 module.exports = app;
