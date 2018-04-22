@@ -25,3 +25,8 @@
     height: 30px;
     width: 30px
 }
+
+#built-by {
+    color: white;
+    text-decoration: none;
+}

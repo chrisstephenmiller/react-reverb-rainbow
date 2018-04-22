@@ -20,7 +20,7 @@
 
 .photo {
   max-width: 100%;
-  opacity: .9;
+  opacity: .85;
   backface-visibility: hidden;
 }
 

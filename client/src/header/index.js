@@ -18,7 +18,7 @@ class Header extends Component {
     return (
       <div id="header">
         <div id="header-text">
-        <span>REVERB RAINBOW </span>
+        <span>REACT REVERB RAINBOW </span>
         </div>
       </div>
     );
