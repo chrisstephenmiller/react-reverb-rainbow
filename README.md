@@ -1,5 +1,5 @@
 # react-reverb-rainbow
 
-Experimenting with Reverb API (reverb.com)
+Experimenting with Reverb API (www.reverb.com)
 
-Built with Postgress/Express/React/Node.
+Built with Postgres/Express/React/Node.
