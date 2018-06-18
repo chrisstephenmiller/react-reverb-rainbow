@@ -18,7 +18,7 @@ class footer extends Component {
     return (
       <div id="footer">
         <div id="footer-text">
-          <a id="built-by" href="https://github.com/chrisstephenmiller/react-reverb-rainbow" target="_blank" >built by chris miller</a>
+          <a id="built-by" href="https://github.com/chrisstephenmiller/react-reverb-rainbow" target="_blank" >built by chris stephen miller</a>
         </div>
       </div>
     );
